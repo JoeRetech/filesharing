@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<style>
+    body {
+        background: url("{%  static 'crime.jpg'%}") no-repeat center top;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: sans-serif;
+        height: 100vh;
+        display: flex;
+        margin: 0rem;
+        font-family: 'Open Sans', sans-serif;
+        color: brown;
+    }
+</style>
+
+<body>
+    {% include "link.html" %}
+
+
+    <div class="container mt-5">
+        <form style="background-color: #880E4F" class="col-6 mx-auto card p-3 shadow-lg"
+            action="{% url 'send_email' %}" method='post'>
+            <h1 style="color: #fff;">Share</h1>
+            {% csrf_token %}
+            <div style="color: #fff;" class="form-group">
+                {{ form.as_p }}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-outline-warning py-3 px-5">
+            </div>
+        </form>
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>
